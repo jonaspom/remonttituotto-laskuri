@@ -9,7 +9,7 @@ st.sidebar.title("Syötä parametrit")
 
 remontin_hinta = st.sidebar.number_input("Remontin hinta (sis. ALV)", value=100000, step=1000)
 laina_aika = st.sidebar.number_input("Laina-aika (vuotta)", value=10, step=1, min_value=1)
-korkoprosentti = st.sidebar.number_input("Lainan korko (%)", value=10.0, step=0.1)
+korkoprosentti = st.sidebar.number_input("Lainan korko (%)", value=6.0, step=0.1)
 remontin_kesto = st.sidebar.number_input("Remontin kesto (kk)", value=6, step=1, min_value=0)
 etsinnan_kesto = st.sidebar.number_input("Uuden vuokralaisen etsintä (kk)", value=4, step=1, min_value=0)
 nykyinen_vuokra = st.sidebar.number_input("Nykyinen vuokra (alv 0, €/kk)", value=2100, step=100)
