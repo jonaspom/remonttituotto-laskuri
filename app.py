@@ -94,7 +94,7 @@ with col1:
 - **Uuden vuokralaisen etsintä:** {etsinnan_kesto} kk
 - **Vuokra ennen remonttia:** {nykyinen_vuokra:,.2f} €/kk (alv 0)
 - **Vuokra remontin jälkeen:** {uusi_vuokra:,.2f} €/kk (alv 0, +{vuokran_korotus:.1f} %)
-- **Vuokran ALV:** {vuokran_alv:.1f} %
+- **Vuokra remontin jälkeen (sis. alv):** {(uusi_vuokra*(1+(vuokran_alv/100)):.1f} %
 - **Vuotuiset kulut:** {vuosikulut:,.2f} € (sis. ALV {kulu_alv:.1f} %)
 - **Laina-aika:** {laina_aika} vuotta
 - **Korko:** {korkoprosentti:.2f} %
