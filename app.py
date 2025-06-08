@@ -15,7 +15,7 @@ remontin_kesto = st.sidebar.number_input("Remontin kesto (kk)", value=6, step=1,
 etsinnan_kesto = st.sidebar.number_input("Uuden vuokralaisen etsintä (kk)", value=6, step=1, min_value=0)
 nykyinen_vuokra = st.sidebar.number_input("Nykyinen vuokra (alv 0, €/kk)", value=2100, step=100)
 vuokran_korotus = st.sidebar.number_input("Vuokran korotus (%)", value=50.0, step=1.0)
-vuosikulut = st.sidebar.number_input("Liikehuoneiston vuotuiset kulut (sis. ALV)", value=6000, step=100)
+vuosikulut = st.sidebar.number_input("Liikehuoneistoon kohdistuvat, vähennyskelpoiset vuotuiset kulut (sis. ALV)", value=6000, step=100)
 laskenta_vuodet = st.sidebar.number_input("Laskenta-aika (vuotta)", value=10, step=1, min_value=1)
 
 remontin_alv = alv
