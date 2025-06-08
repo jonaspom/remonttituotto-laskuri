@@ -86,7 +86,7 @@ Tämä laskuri auttaa arvioimaan liiketilan remontin kannattavuutta taloyhtiöll
 st.header("Yhteenveto hankkeesta")
 col1, col2 = st.columns(2)
 
-uusi_vuokra_sisalv = (uusi_vuokra*(1+(vuokran_alv/100))
+uusi_vuokra_sisalv = (uusi_vuokra*(1+(vuokran_alv/100)))
 
 with col1:
     st.subheader("Perustiedot")
