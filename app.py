@@ -166,6 +166,65 @@ ax.set_ylabel("€")
 ax.legend()
 st.pyplot(fig)
 
+# --- VERTAILU: NYKYTILA, EI REMONTTIA ---
+
+nykytila_vuosituotot = []
+nykytila_kertyva = []
+kertynyt_nykytila = 0
+
+for vuosi in range(1, laskenta_vuodet + 1):
+    vuokratulo = nykyinen_vuokra * 12  # Ei alv-vähennystä
+    vuosituotto = vuokratulo  # Ei investointikuluja, ei lainaa, ei kuluja lasketa (ne on jo maksettu nytkin)
+    nykytila_vuosituotot.append(vuosituotto)
+    kertynyt_nykytila += vuosituotto
+    nykytila_kertyva.append(kertynyt_nykytila)
+
+# --- ERO ---
+ero_vuosituotto = np.array(vuosituotot) - np.array(nykytila_vuosituotot)
+ero_kertyva = (np.array(kertyva_kassavirta) - tappiot) - np.array(nykytila_kertyva)
+
+st.header("Vertailu: Investointi vs. nykytila")
+
+colA, colB = st.columns(2)
+with colA:
+    st.markdown("#### Remontin jälkeen (investointi)")
+    st.markdown(f"- Kokonaistuotto {laskenta_vuodet} vuodessa: **{(kokonaiskassavirta - tappiot):,.2f} €**")
+with colB:
+    st.markdown("#### Nykytila (ei remonttia)")
+    st.markdown(f"- Kokonaistuotto {laskenta_vuodet} vuodessa: **{nykytila_kertyva[-1]:,.2f} €**")
+
+st.markdown(f"""
+- **Erotus** ({laskenta_vuodet} vuoden kohdalla):  
+  { (kokonaiskassavirta - tappiot) - nykytila_kertyva[-1]:,.2f} € 
+""")
+
+st.subheader("Vuosikohtainen vertailu")
+vertailutaulu = []
+for vuosi in range(laskenta_vuodet):
+    vertailutaulu.append([
+        f"Vuosi {vuosi+1}",
+        vuosituotot[vuosi],
+        nykytila_vuosituotot[vuosi],
+        ero_vuosituotto[vuosi],
+        (kertyva_kassavirta[vuosi] - tappiot) - nykytila_kertyva[vuosi],
+    ])
+st.table(
+    pd.DataFrame(vertailutaulu, columns=["Vuosi", "Investoinnin kassavirta", "Nykytilan kassavirta", "Erotus vuodessa", "Erotus kumulatiivisesti"])
+)
+
+# --- VISUALISOINTI ---
+st.subheader("Visualisointi: Investointi vs. nykytila")
+fig2, ax2 = plt.subplots(figsize=(8, 4))
+ax2.bar(np.arange(1, laskenta_vuodet + 1)-0.2, vuosituotot, width=0.4, label="Investointi", alpha=0.8)
+ax2.bar(np.arange(1, laskenta_vuodet + 1)+0.2, nykytila_vuosituotot, width=0.4, label="Nykytila", alpha=0.5)
+ax2.plot(np.arange(1, laskenta_vuodet + 1), ero_kertyva, marker='o', color='black', label="Erotus kumulatiivisesti")
+ax2.axhline(0, color='grey', linestyle='--')
+ax2.set_title("Vuosikassavirrat: Investointi vs. nykytila")
+ax2.set_xlabel("Vuosi")
+ax2.set_ylabel("€")
+ax2.legend()
+st.pyplot(fig2)
+
 with st.expander("Mahdollisia riskejä ja huomioita"):
     st.markdown("""
 - Remontin mahdollinen viivästyminen kasvattaa vuokratulojen menetystä.
