@@ -7,16 +7,16 @@ st.set_page_config(page_title="Taloyhtiön liikehuoneiston remontin tuottoanalyy
 
 st.sidebar.title("Syötä parametrit")
 
-alv = st.sidebar.number_input("ALV (%)", value=25.5, step=0.1)
 remontin_hinta = st.sidebar.number_input("Remontin hinta (sis. ALV)", value=100000, step=1000)
 laina_aika = st.sidebar.number_input("Laina-aika (vuotta)", value=10, step=1, min_value=1)
 korkoprosentti = st.sidebar.number_input("Lainan korko (%)", value=10.0, step=0.1)
 remontin_kesto = st.sidebar.number_input("Remontin kesto (kk)", value=6, step=1, min_value=0)
-etsinnan_kesto = st.sidebar.number_input("Uuden vuokralaisen etsintä (kk)", value=6, step=1, min_value=0)
+etsinnan_kesto = st.sidebar.number_input("Uuden vuokralaisen etsintä (kk)", value=4, step=1, min_value=0)
 nykyinen_vuokra = st.sidebar.number_input("Nykyinen vuokra (alv 0, €/kk)", value=2100, step=100)
-vuokran_korotus = st.sidebar.number_input("Vuokran korotus (%)", value=50.0, step=1.0)
+vuokran_korotus = st.sidebar.number_input("Vuokran korotus (%) (ei sis alv.)", value=50.0, step=1.0)
 vuosikulut = st.sidebar.number_input("Liikehuoneistoon kohdistuvat, vähennyskelpoiset vuotuiset kulut (sis. ALV)", value=6000, step=100)
-laskenta_vuodet = st.sidebar.number_input("Laskenta-aika (vuotta)", value=10, step=1, min_value=1)
+laskenta_vuodet = st.sidebar.number_input("Laskenta-aika (vuotta)", value=5, step=1, min_value=1)
+alv = st.sidebar.number_input("ALV (%)", value=25.5, step=0.1)
 
 remontin_alv = alv
 vuokran_alv = alv
