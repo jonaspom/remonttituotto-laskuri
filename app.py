@@ -234,4 +234,4 @@ with st.expander("Mahdollisia riskejä ja huomioita"):
 - Vuokratuottoihin ja kuluihin ei tässä mallissa ole sisällytetty vuosittaisia indeksikorotuksia tai inflaatiota.
     """)
 
-st.caption("Tämä laskuri ei ole sijoitus- tai taloudellista neuvontaa, vaan antaa suuntaa-antavan arvion investoinnin vaikutuksesta taloyhtiön kassavirtaan.")
+st.caption("Tämä laskuri ei ole sijoitus- tai taloudellista neuvontaa, vaan antaa suuntaa-antavan arvion investoinnin vaikutuksesta taloyhtiön kassavirtaan. Laskurin tuottanut Des Train AI Oy ei ota mitään vastuuta laskurin oikeeellisuudesta tai sen perusteella tehtyjen päätösten välittömistä tai välillisistä kuluista.")
